@@ -1,30 +1,19 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+app.set('port', 3333);
+app.use(cors());
+app.use(express.static('static'));
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-
-io.on('connection', (socket) => {
-  socket.on('message from client', (message) => {
-    console.log('message from client: ' + message);
-    connections.push(socket);
-    console.log(`all users are ${connections.length}`)
-    io.sockets.emit('message from server', message);
-  });
-
-  socket.on('disconnect', () => {
-    connections.splice(connections.indexOf(socket), 1);
-    console.log(`all users are ${connections.length}`)
-    socket.emit('disconnect', { alert: "someone exited..."})
-  })
-});
-
-server.listen(3000, () => {
-  console.log('START APP on ...');
+server.listen(app.get('port'), () => {
+  console.log(`START APP on ${app.get('port')}...`);
 });

@@ -1,6 +1,6 @@
 const socket = io();
 
-const messages = document.getElementById('messages');
+const messages = document.getElementById('messageList');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 

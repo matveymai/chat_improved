@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Socket.IO chat</title>
   </head>
   <body>
@@ -13,11 +13,15 @@
 
   <div class="container">
       <div class="container-left"></div>
-      <div class="container-center"></div>
+      <div class="container-center">
+          <ul id="messageList"></ul>
+          <form id="form">
+              <input id="input" name="message" type="text" placeholder="Write message...">
+              <button id="button" type="submit" value="send"></button>
+          </form>
+      </div>
       <div class="container-right"></div>
   </div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="static/client.js"></script>
   </body>
 </html>
