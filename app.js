@@ -1,10 +1,10 @@
-import express from 'express'
-import http from 'http'
-import path from 'path'
-import cors from 'cors'
+const path = require('path')
+const express = require('express')
+const cors = require('cors')
+const http = require('http')
+const middlewares = require('./middlewares.js')
 
 
-const __dirname = path.resolve()
 const app = express()
 const server = http.createServer(app)
 
@@ -14,12 +14,13 @@ app.use(cors({
     origin: 'localhost'
 }))
 
-app.use(express.static(path.resolve(__dirname, 'static')))
-
-
+app.use(express.static('static'))
+app.use(middlewares.reqTime)
+app.use(middlewares.logger)
 
 app.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'static', 'index.html'))
+    console.log(req.reqTime)
 })
 
 app.get('/about', (req,res) => {
