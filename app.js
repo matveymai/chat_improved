@@ -15,7 +15,6 @@ app.use(cors({
 }))
 
 app.use(express.static('static'))
-app.use(middlewares.reqTime)
 app.use(middlewares.logger)
 
 app.get('/', (req,res) => {
