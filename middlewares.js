@@ -1,8 +1,10 @@
 const colors = require('colors')
+const chalk = require('chalk')
 
 module.exports.reqTime = (req,res,next) => {
-    req.reqTime = Date.now()
-   // req.time = `The time is ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
+    const today = new Date()
+    const time = `The time is ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
+    console.log(time)
     next()
 }
 

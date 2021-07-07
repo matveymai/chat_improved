@@ -2,8 +2,8 @@ const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const http = require('http')
+const bodyParser= require('body-parser')
 const middlewares = require('./middlewares.js')
-
 
 const app = express()
 const server = http.createServer(app)
@@ -20,7 +20,6 @@ app.use(middlewares.logger)
 
 app.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'static', 'index.html'))
-    console.log(req.reqTime)
 })
 
 app.get('/about', (req,res) => {
