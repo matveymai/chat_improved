@@ -6,6 +6,7 @@ const bodyParser= require('body-parser')
 const morgan = require('morgan')
 const hbs = require('hbs')
 const middlewares = require('./middlewares.js')
+const routers = require('./routes/routes.js')
 
 const app = express()
 const server = http.createServer(app)
@@ -15,6 +16,7 @@ app.set("view engine", "hbs")
 app.set('views', path.resolve(__dirname, 'hbs'))
 hbs.registerPartials(path.resolve(__dirname, 'hbs', 'partials'))
 
+app.use(routers.router)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -24,19 +26,22 @@ app.use(morgan('combined'))
 
 app.get('/', (req,res) => {
      res.render('index', {
-         title: "Home Page"
+         title: "Home Page",
+         active: "home"
      })
 })
 
 app.get('/about', (req,res) => {
     res.render('about', {
-        title: "About Page"
+        title: "About Page",
+        active: "about"
     })
 })
 
 app.get('/profile', (req,res) => {
     res.render('profile', {
-        title: "Profile Page"
+        title: "Profile Page",
+        active: "profile"
     })
 })
 
