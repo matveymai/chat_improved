@@ -20,9 +20,13 @@ app.use(routers.router)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
-//app.use(express.static(path.resolve(__dirname, 'static'))
+app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(morgan('combined'))
 //app.use(middlewares.logger)
+
+app.get('/hello', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'static', 'hello.html'))
+})
 
 app.get('/', (req,res) => {
      res.render('index', {
@@ -49,12 +53,12 @@ app.get('/favicon.ico', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'static', 'favicon.ico'))
 })
 
-app.get('/:name', (req, res) => {
-    let name = req.params.name
-    res.json({
-        message: `Hello ${name}`
-    })
-})
+//app.get('/:name', (req, res) => {
+//    let name = req.params.name
+//    res.json({
+//        message: `Hello ${name}`
+//    })
+//})
 
 server.listen(PORT, () => {
     console.log(`Server has been started on ${PORT}...`)
