@@ -9,5 +9,5 @@ let users = [
 const getAllUsers = (req, res) => {
     res.status(200).json(users)
 }
-
+module.exports.users = users
 module.exports.getAllUsers = getAllUsers

@@ -3,13 +3,17 @@ const express = require('express')
 const cors = require('cors')
 const http = require('http')
 const bodyParser= require('body-parser')
+const { Server } = require('socket.io')
 const morgan = require('morgan')
 const hbs = require('hbs')
 const middlewares = require('./middlewares.js')
 const routers = require('./routes/routes.js')
+const helpers = require('./helpers.js')
+
 
 const app = express()
 const server = http.createServer(app)
+const io = new Server(server)
 const PORT = process.env.PORT ?? 3000
 
 app.set("view engine", "hbs")
@@ -29,7 +33,7 @@ app.get('/hello', (req,res) => {
 })
 
 app.get('/', (req,res) => {
-     res.render('index', {
+     res.render('home', {
          title: "Home Page",
          active: "home"
      })
@@ -46,6 +50,21 @@ app.get('/profile', (req,res) => {
     res.render('profile', {
         title: "Profile Page",
         active: "profile"
+    })
+})
+
+let users = [
+    {id: 1, name: 'Neo', status: 'online'},
+    {id: 2, name: 'Alice', status: 'online'},
+    {id: 3, name: 'Mad Max', status: 'offline'},
+    {id: 4, name: 'Sponge Bob', status: 'online'},
+    {id: 5, name: 'Jhon Wick', status: 'offline'}
+]
+
+app.get('/users', (req,res) => {
+    res.render('users', {
+        title: "Users Page",
+        users: users
     })
 })
 
