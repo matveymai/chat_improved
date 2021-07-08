@@ -29,11 +29,15 @@ app.get('/', (req,res) => {
 })
 
 app.get('/about', (req,res) => {
-    res.render('about')
+    res.render('about', {
+        title: "About Page"
+    })
 })
 
 app.get('/profile', (req,res) => {
-    res.render('profile')
+    res.render('profile', {
+        title: "Profile Page"
+    })
 })
 
 app.get('/favicon.ico', (req,res) => {
