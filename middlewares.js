@@ -1,6 +1,5 @@
 const colors = require('colors')
 
-
 module.exports.logger = (req,res,next) => {
     const today = new Date()
     const log = console.log
