@@ -40,6 +40,9 @@ io.on('connection', (socket) => {
     console.log(colors.bgBrightYellow.black('New user connected'));
     console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
 
+    socket.on('message_from_client', (message) => {
+    console.log(message)
+    })
 
     socket.on('disconnect', () => {
     users.pop()

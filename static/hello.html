@@ -11,9 +11,10 @@
         <div class="chat_box">
             <ul class="messages"></ul>
         </div>
-        <form class="form" action="">
-            <input class="input_text" type="text" name="message">
-            <input class="btn" type="submit" name="button" value="Send">
+        <form class="form_text" id="frm" action="">
+            <input class="input_text" id="inp" autocomplete="off" /><button class="btn">Send</button>
+           <!-- <input class="input_text" type="text" name="message">
+            <input class="btn" type="submit" name="button" value="Send">-->
         </form>
     </div>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
