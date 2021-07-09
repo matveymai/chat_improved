@@ -1,28 +1,35 @@
 body{
+    height: 100vh;
     margin: 0;
 }
-#navbar{
+.navbar{
     height: 50px;
     background-color: coral;
     margin-bottom: 10px;
 }
-#cont1{
-    height: 40px;
-    width: 100px;
+
+.wrapper{
+    border-radius: 10px;
+    height: 500px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
     background-color: indianred;
 }
-#cont2{
-    height: 40px;
-    width: 100px;
+.chat_box{
+    height: 450px;
     background-color: blueviolet;
 }
-#cont3{
-    height: 40px;
-    width: 100px;
-    background-color: aqua;
-}
-#cont4{
-    height: 40px;
-    width: 100px;
+.form{
+    position: relative;
+    padding: 5px;
     background-color: khaki;
+}
+.input_text{
+    width: 90%;
+}
+.btn{
+    position: absolute;
+    right: 5px;
 }

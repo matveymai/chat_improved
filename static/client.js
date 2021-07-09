@@ -1,5 +1,6 @@
 const socket = io();
 
+/*
 const messages = document.getElementById('messageList');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
@@ -21,4 +22,4 @@ socket.on('message from client', (message) => {
 
 socket.on('disconnect', (message) => {
     console.log(message.alert);
-})
+})*/

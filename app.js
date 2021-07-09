@@ -1,4 +1,5 @@
 const path = require('path')
+const colors = require('colors')
 const express = require('express')
 const cors = require('cors')
 const http = require('http')
@@ -21,8 +22,8 @@ app.set('views', path.resolve(__dirname, 'hbs'))
 hbs.registerPartials(path.resolve(__dirname, 'hbs', 'partials'))
 
 app.use(routers.router)
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json()) // parse requests of content-type - application/json
+app.use(bodyParser.urlencoded({ extended: true })) // parse requests of content-type - application/x-www-form-urlencoded
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(morgan('combined'))
@@ -31,6 +32,21 @@ app.use(morgan('combined'))
 app.get('/hello', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'static', 'hello.html'))
 })
+
+let users = []
+
+io.on('connection', (socket) => {
+    users.push(1)
+    console.log(colors.bgBrightYellow.black('New user connected'));
+    console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
+
+
+    socket.on('disconnect', () => {
+    users.pop()
+    console.log(colors.bgBrightRed.brightWhite('user disconnected'))
+    console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
+  })
+});
 
 app.get('/', (req,res) => {
      res.render('home', {
@@ -53,13 +69,13 @@ app.get('/profile', (req,res) => {
     })
 })
 
-let users = [
+/*let users = [
     {id: 1, name: 'Neo', status: 'online'},
     {id: 2, name: 'Alice', status: 'online'},
     {id: 3, name: 'Mad Max', status: 'offline'},
     {id: 4, name: 'Sponge Bob', status: 'online'},
     {id: 5, name: 'Jhon Wick', status: 'offline'}
-]
+]*/
 
 app.get('/users', (req,res) => {
     res.render('users', {
