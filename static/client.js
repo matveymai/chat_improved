@@ -1,12 +1,12 @@
 const socket = io()
 
-const messages = document.getElementsByClassName('messages')
-const frm = document.getElementById('frm')
-const input = document.getElementsByClassName('input_text')
+const messages = document.getElementById('messages')
+const frm = document.getElementById('form_text')
+const input = document.getElementById('input_text')
 
 
-frm.addEventListener('submit', function (e){
-    e.preventDefault()
+frm.addEventListener('submit', function (event){
+    event.preventDefault()
     if (input.value) {
       socket.emit('message_from_client', input.value)
       console.log(input.value)

@@ -9,12 +9,11 @@
     <div class="navbar">Express Chat on Socket.io</div>
     <div class="wrapper">
         <div class="chat_box">
-            <ul class="messages"></ul>
+            <ul id="messages"></ul>
         </div>
-        <form class="form_text" id="frm" action="">
-            <input class="input_text" id="inp" autocomplete="off" /><button class="btn">Send</button>
-           <!-- <input class="input_text" type="text" name="message">
-            <input class="btn" type="submit" name="button" value="Send">-->
+        <form class="form_text" id="form_text" action="">
+            <input class="input_text" id="input_text" autocomplete="off" />
+            <button class="btn" type="submit">Send</button>
         </form>
     </div>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
