@@ -14,8 +14,12 @@ frm.addEventListener('submit', function (event){
     }
 })
 
-socket.on('Hi', (message) => {
-    console.log(message)
+socket.on('Hi', (data) => {
+    console.log(data)
+    const li = document.createElement('li')
+    li.textContent = data
+    messages.appendChild(li)
+    window.scroll(0, document.body.scrollHeight)
 })
 
 /*socket.on('message from client', (message) => {

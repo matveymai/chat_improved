@@ -37,19 +37,18 @@ let users = []
 
 io.on('connection', (socket) => {
     users.push(1)
-    console.log(colors.bgBrightYellow.black('New user connected'));
-    console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
+    console.log(colors.bgBrightGreen.black('New user connected'));
+    console.log(colors.bgBrightYellow.black(`All users = ${users.length}`))
 
     socket.on('message_from_client', (message) => {
     console.log(colors.bgBrightWhite.black(`Messsage: ${message}`))
-    socket.broadcast.emit('Hi', 'Hello from NodeJS!')
-
+    socket.broadcast.emit('Hi', message)
     })
 
     socket.on('disconnect', () => {
     users.pop()
     console.log(colors.bgBrightRed.brightWhite('user disconnected'))
-    console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
+    console.log(colors.bgBrightYellow.black(`All users = ${users.length}`))
   })
 });
 
