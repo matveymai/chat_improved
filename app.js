@@ -41,7 +41,9 @@ io.on('connection', (socket) => {
     console.log(colors.bgBrightGreen.black(`All users = ${users.length}`))
 
     socket.on('message_from_client', (message) => {
-    console.log(message)
+    console.log(colors.bgBrightWhite.black(`Messsage: ${message}`))
+    socket.broadcast.emit('Hi', 'Hello from NodeJS!')
+
     })
 
     socket.on('disconnect', () => {

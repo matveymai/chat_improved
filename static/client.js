@@ -14,13 +14,9 @@ frm.addEventListener('submit', function (event){
     }
 })
 
-/*form.addEventListener('submit', (event) => {
-    event.preventDefault()
-    if (input.value) {
-        socket.emit('message_from_client', input.value)
-        input.value = ''
-    }
-})*/
+socket.on('Hi', (message) => {
+    console.log(message)
+})
 
 /*socket.on('message from client', (message) => {
     const item = document.createElement('li');
