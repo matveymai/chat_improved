@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Hello</title>
+</head>
+<body>
+<div class="navbar">Express Chat on Socket.io</div>
+<div class="wrapper">
+    <div class="chat_box">
+        <ul id="messages"></ul>
+    </div>
+    <form class="form_text" id="form_text" action="">
+        <input class="input_text" id="input_text" autocomplete="off" />
+        <button class="btn" id="btn" type="submit">Send</button>
+    </form>
+</div>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="client.js"></script>
+</body>
+</html>

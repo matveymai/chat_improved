@@ -33,6 +33,10 @@ app.get('/hello', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'static', 'hello.html'))
 })
 
+app.get('/chat', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'static', 'chat.html'))
+})
+
 let users = []
 
 io.on('connection', (socket) => {
@@ -41,8 +45,12 @@ io.on('connection', (socket) => {
     console.log(colors.bgBrightYellow.black(`All users = ${users.length}`))
 
     socket.on('message_from_client', (message) => {
-    console.log(colors.bgBrightWhite.black(`Messsage: ${message}`))
-    socket.broadcast.emit('Hi', message)
+        console.log(colors.bgBrightWhite.black(`Messsage: ${message}`))
+
+        socket.broadcast.emit('message_from_server', {
+            hello: "Hello NodeJS",
+            data: message
+        })
     })
 
     socket.on('disconnect', () => {
@@ -50,7 +58,7 @@ io.on('connection', (socket) => {
     console.log(colors.bgBrightRed.brightWhite('user disconnected'))
     console.log(colors.bgBrightYellow.black(`All users = ${users.length}`))
   })
-});
+})
 
 app.get('/', (req,res) => {
      res.render('home', {
