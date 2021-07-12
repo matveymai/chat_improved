@@ -21,6 +21,14 @@ frm.addEventListener('submit',  (event) => {
     }
 })
 
+/*frm.addEventListener('keypress', (event) => {
+    socket.emit('typing')
+})
+
+socket.on('user_is_typing', () => {
+    addMessage('someone is typing message...')
+})*/
+
 socket.on('message_from_server', (message) => {
     console.log(message.hello)
     console.log(message.data)

@@ -53,6 +53,10 @@ io.on('connection', (socket) => {
         })
     })
 
+  /*  socket.on('typing', () => {
+        socket.broadcast.emit('user_is_typing')
+    })*/
+
     socket.on('disconnect', () => {
     users.pop()
     console.log(colors.bgBrightRed.brightWhite('user disconnected'))
