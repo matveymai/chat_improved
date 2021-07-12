@@ -3,22 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Hello</title>
+    <title>Chat</title>
 </head>
 <body>
+    <nav id="menu">
 
-    <div class="navbar">Express Chat on Socket.io</div>
-    <div class="wrapper">
-        <div class="chat_box">
-            <ul id="messages"></ul>
+            <div class="menu-item">
+                <a href="/">Home</a>
+            </div>
+            <div class="menu-item">
+                <a href="/about">About</a>
+            </div>
+            <div class="menu-item">
+                <a href="/profile">Profile</a>
+            </div>
+            <div class="menu-item">
+                <a href="/chat">Chat</a>
+            </div>
+
+    </nav>
+
+    <div class="chat-container">
+
+        <div class="chat-rooms">
         </div>
-        <form class="form_text" id="form_text" action="">
-            <input class="input_text" id="input_text" autocomplete="off" />
-            <button class="btn" id="btn" type="submit">Send</button>
-        </form>
+
+        <div class="chat-box">
+
+            <div class="chat-box_messages">
+            </div>
+
+            <div class="chat-box_input">
+                <form action="#">
+                <div class="input-container">
+
+                        <input class="text" type="text">
+                        <button class="button" type="submit" value="Send">Send</button>
+
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="chat-users">
+        </div>
+
     </div>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="client.js"></script>
 
 </body>
 </html>

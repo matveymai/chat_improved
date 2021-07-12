@@ -26,6 +26,7 @@ app.use(bodyParser.json()) // parse requests of content-type - application/json
 app.use(bodyParser.urlencoded({ extended: true })) // parse requests of content-type - application/x-www-form-urlencoded
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(express.static(path.resolve(__dirname, 'node_modules', 'bulma', 'css')))
 app.use(morgan('combined'))
 //app.use(middlewares.logger)
 

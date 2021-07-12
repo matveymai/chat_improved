@@ -1,26 +1,86 @@
+:root{
+    --menu-width: 37.5em; /* Width of menu */
+    --items: 4; /* Number of items you have */
+    --item-width: calc(var(--menu-width) / var(--items));
+    --chat-container-heigth: 70vh;
+    --messages-heigth: calc(var(--chat-container-heigth) - var(--input-heigth));
+    --input-heigth: 3em;
+}
 body{
     height: 100vh;
+    width: 100vw;
     margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg,#102eff, #d2379b);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
-.navbar{
-    height: 50px;
-    background-color: coral;
-    margin-bottom: 10px;
+nav{
+    width: var(--menu-width);
+    margin: 1em auto;
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav .menu-item{
+    color: white;
+    display: flex;
+    font-size: 1em;
+    font-weight: 600;
 }
 
-.wrapper{
+nav .menu-item a{
+    color: white;
+    text-decoration: none;
+}
+
+
+.chat-container{
+    height: var(--chat-container-heigth);
+    border: 2px solid white;
     border-radius: 10px;
-    height: 500px;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    background-color: indianred;
+    display: flex;
 }
-.chat_box{
-    height: 450px;
-    background-color: blueviolet;
+.chat-rooms{
+    background-color: gold;
+    flex-grow: 1;
 }
+.chat-box{
+    background-color: aqua;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+}
+.chat-users{
+    background-color: coral;
+    flex-grow: 1;
+}
+.chat-box_messages{
+    background-color: lime;
+    height: var(--messages-heigth);
+}
+.chat-box_input{
+    background-color: red;
+    height: var(--input-heigth);
+}
+.input-container{
+    margin: 0 auto;
+    padding: 1em;
+    position: relative;
+}
+.text{
+
+}
+.button{
+    position: absolute;
+    right: 0;
+}
+
+/*
 .form_text{
     position: relative;
     padding: 5px;
@@ -38,5 +98,5 @@ body{
     background-color: black;
     color: white;
     border-color: red;
-    border-radius: 0 5px 0 5px; /* top left, top right, bottom right, bottom left */
-}
+    border-radius: 0 5px 0 5px; !* top left, top right, bottom right, bottom left *!
+}*/
