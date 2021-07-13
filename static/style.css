@@ -1,10 +1,11 @@
 :root{
-    --menu-width: 37.5em; /* Width of menu */
+    --menu-width: 37.5rem; /* Width of menu */
     --items: 4; /* Number of items you have */
     --item-width: calc(var(--menu-width) / var(--items));
     --chat-container-heigth: 70vh;
     --messages-heigth: calc(var(--chat-container-heigth) - var(--input-heigth));
-    --input-heigth: 3em;
+    --input-heigth: 3rem;
+    --button-width: 3rem;
 }
 body{
     height: 100vh;
@@ -68,16 +69,18 @@ nav .menu-item a{
     height: var(--input-heigth);
 }
 .input-container{
-    margin: 0 auto;
-    padding: 1em;
+    margin: 1rem;
     position: relative;
+    display: flex;
 }
 .text{
-
+    flex: 1 0 auto;
+    margin-right: 3.5rem;
 }
 .button{
     position: absolute;
     right: 0;
+    min-width: var(--button-width);
 }
 
 /*
