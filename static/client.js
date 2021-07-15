@@ -1,14 +1,15 @@
 const socket = io()
 
 const messages = document.getElementById('messages')
-const frm = document.getElementById('form_text')
-const input = document.getElementById('input_text')
+const frm = document.getElementById('form')
+const input = document.getElementById('text')
 
 const addMessage = (message) => {
-    const li = document.createElement('li')
-    li.textContent = message
-    messages.appendChild(li)
-    window.scroll(0, document.body.scrollHeight)
+    const div = document.createElement('div')
+    div.textContent = message
+    messages.appendChild(div)
+    messages.scrollTop = messages.scrollHeight
+    /*window.scroll(0, document.body.scrollHeight)*/
 }
 
 frm.addEventListener('submit',  (event) => {

@@ -30,17 +30,17 @@
 
         <div class="chat-box">
 
-            <div class="chat-box_messages">
+            <div class="chat-box_messages" id="messages">
             </div>
 
             <div class="chat-box_input">
-                <form action="#">
-                <div class="input-container">
+                <form id="form" action="#">
+                    <div class="input-container">
 
-                        <input class="text" type="text">
+                        <input class="text" id="text" type="text" placeholder="Input a message...">
                         <button class="button" type="submit" value="Send">Send</button>
 
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -49,6 +49,7 @@
         </div>
 
     </div>
-
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
 </body>
 </html>
