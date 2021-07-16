@@ -68,6 +68,14 @@ nav .menu-item a{
     height: var(--messages-heigth);
     overflow-y: auto;
 }
+#message{
+    text-overflow: ellipsis;
+    hyphens: auto;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid white;
+    border-radius: 5px;
+}
 .chat-box_input{
     background-color: red;
     height: var(--input-heigth);
