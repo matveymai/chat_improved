@@ -6,10 +6,20 @@ const input = document.getElementById('text') //элемент поля ввод
 
 //функция добавления новых сообщений в чате
 const addMessage = (message) => {
-    const div = document.createElement('div') //создаем контейнер для одного сообщения
-    div.textContent = message //вносим в него текст нового сообщения
-    div.id = 'message' //указываем для него id
-    messages.appendChild(div) //добавляем в общий контейнер
+    const now = new Date()
+    const time = `${now.getHours()}:${now.getMinutes()}`
+
+    const div_line = document.createElement('div') //создаем контейнер для строки
+
+    const div_text = document.createElement('div') //создаем контейнер для одного сообщения
+
+    div_text.textContent = `${message} ${time}` //вносим в него текст нового сообщения
+    div_text.setAttribute('id', 'message') //указываем для него id
+    div_text.setAttribute('class', 'message-wrapper') //указываем для него class
+
+
+    div_line.appendChild(div_text)
+    messages.appendChild(div_line) //добавляем в общий контейнер
     messages.scrollTop = messages.scrollHeight //автоскролл вниз при новых сообщениях
     /*window.scroll(0, document.body.scrollHeight)*/
 }
