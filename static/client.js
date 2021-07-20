@@ -10,13 +10,11 @@ const addMessage = (message) => {
     const time = `${now.getHours()}:${now.getMinutes()}`
 
     const div_line = document.createElement('div') //создаем контейнер для строки
-
     const div_text = document.createElement('div') //создаем контейнер для одного сообщения
 
     div_text.textContent = `${message} ${time}` //вносим в него текст нового сообщения
     div_text.setAttribute('id', 'message') //указываем для него id
     div_text.setAttribute('class', 'message-wrapper') //указываем для него class
-
 
     div_line.appendChild(div_text)
     messages.appendChild(div_line) //добавляем в общий контейнер

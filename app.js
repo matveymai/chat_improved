@@ -66,10 +66,11 @@ io.on('connection', (socket) => {
 })
 
 app.get('/', (req,res) => {
-     res.render('home', {
+     res.sendFile(path.resolve(__dirname, 'static', 'home.html'))
+/*     res.render('home', {
          title: "Home Page",
          active: "home"
-     })
+     })*/
 })
 
 app.get('/about', (req,res) => {
