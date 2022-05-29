@@ -17,33 +17,57 @@
 </head>
 <body>
 <ul id="messages"></ul>
-<form id="form" action="">
+<form id="form">
     <input id="input" autocomplete="off" />
     <button>Send</button>
 </form>
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
+  // создаем клиентский сокет
   let socket = io();
 
+  // получаем ссылки на элементы
   let messages = document.getElementById('messages');
   let form = document.getElementById('form');
   let input = document.getElementById('input');
 
   form.addEventListener('submit', function(e) {
+    // блокируем отправку формы на сервер
     e.preventDefault();
-    if (input.value) {
-      socket.emit('message_from_client', input.value);
+    // если поле не пустое, то отправляем сообщение на сервер
+    if (input.value.trim()) {
+      // отправляем ивент с сообщением на сервер
+      socket.emit('chat_message', input.value);
+      input.value = '';
+    }
+    // иначе просто очищаем поле ввода
+    else {
       input.value = '';
     }
   });
 
-  socket.on('message_from_server', function(msg) {
-    var item = document.createElement('li');
+  // слушаем ивенты с сервера на получение новых сообщений
+  socket.on('chat_message', function(msg) {
+    let item = document.createElement('li');
     item.textContent = msg;
     messages.appendChild(item);
+    // прокрутка к новым сообщениям
     window.scrollTo(0, document.body.scrollHeight);
+    /* messages.scrollTop = messages.scrollHeight*/
   });
+
+  // получаем все сообщения с сервера при подключении
+  socket.on('all_messages', function (msg_list) {
+    msg_list.forEach(function (msg) {
+      console.log(msg)
+      let item = document.createElement('li');
+      item.textContent = msg;
+      messages.appendChild(item);
+    })
+    window.scrollTo(0, document.body.scrollHeight);
+  })
+
 </script>
 </body>
 </html>

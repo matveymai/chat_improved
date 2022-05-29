@@ -1,10 +1,12 @@
-const socket = io() //создаем объект сокета
+// создаем объект сокета
+const socket = io()
 
-const messages = document.getElementById('messages') //элемент контейнера сообщений
-const frm = document.getElementById('form') //элемент формы ввода
-const input = document.getElementById('text') //элемент поля ввода текста
+// получаем ссылки на элементы
+const messages = document.getElementById('messages')
+const frm = document.getElementById('form')
+const input = document.getElementById('text')
 
-//функция добавления новых сообщений в чате
+// функция добавления новых сообщений в чате
 const addMessage = (message) => {
     const now = new Date()
     const time = `${now.getHours()}:${now.getMinutes()}`
@@ -22,7 +24,7 @@ const addMessage = (message) => {
     /*window.scroll(0, document.body.scrollHeight)*/
 }
 
-//добавляем обработчик при нажатии на отправить
+// добавляем обработчик при нажатии на отправить
 frm.addEventListener('submit',  (event) => {
     event.preventDefault()
     if (input.value) {
@@ -33,15 +35,7 @@ frm.addEventListener('submit',  (event) => {
     }
 })
 
-/*frm.addEventListener('keypress', (event) => {
-    socket.emit('typing')
-})
-
-socket.on('user_is_typing', () => {
-    addMessage('someone is typing message...')
-})*/
-
-//слушаем сообщения с сервера от других пользователей и выводим их в чат
+// слушаем сообщения с сервера от других пользователей и выводим их в чат
 socket.on('message_from_server', (message) => {
     console.log(message.hello)
     console.log(message.data)
